@@ -96,17 +96,17 @@ HTML, CSS, Javascript, Bootstrap, Python, Flask
 
 ## Author
 
-- [@mahmoudessam820](https://github.com/mahmoudessam820)
+- [@NayeMontes](https://github.com/NayeMontes/nayeli-montes)
 
 ## 🔗 Links
 
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mahmoud-el-kariouny-822719149/)
-[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/Mahmoud42275)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nayeli-montes/)
+
 
 
 ## Feedback
 
-If you have any feedback, please reach out to us at esame4166@gmail.com
+If you have any feedback, please reach out to us at nayeli.montes@hotmail.com
 
 
 ## Screenshots
