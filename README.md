@@ -1,4 +1,4 @@
-Teck Books 📚
+Book Market by Nayeli 📚
 -----
 
 ## Introduction
@@ -113,7 +113,7 @@ If you have any feedback, please reach out to us at nayeli.montes@hotmail.com
 
 ### Home page 
 
-![](./static/images/screenshots/home.png)
+![](./static/images/Home.png)
 
 
 ### Market page 
