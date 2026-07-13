@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login Page
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid d-flex align-items-center justify-content-center"
+     style="min-height: 90vh; background: linear-gradient(135deg, #0f172a, #1e293b);">
+
+    <div class="card border-0 shadow-lg"
+         style="width: 420px; border-radius: 18px; background: #111827; color: white;">
+
+        <div class="card-body p-4">
+
+            <h3 class="text-center mb-2 fw-bold">
+                👋 Welcome Back
+            </h3>
+
+            <p class="text-center text-secondary mb-4" style="font-size: 14px;">
+                Sign in to access Free Tech Books Market
+            </p>
+
+            <form method="POST">
+
+                {{ form.hidden_tag() }}
+
+                <!-- EMAIL -->
+                <div class="mb-3">
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email(class="form-control bg-dark text-white border-secondary",
+                        placeholder="Enter your email") }}
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="mb-3">
+                    {{ form.password.label(class="form-label") }}
+                    {{ form.password(class="form-control bg-dark text-white border-secondary",
+                        placeholder="Enter your password") }}
+                </div>
+
+                <!-- BUTTON -->
+                <div class="d-grid mt-4">
+                    {{ form.submit(class="btn btn-primary btn-lg shadow") }}
+                </div>
+
+            </form>
+
+            <hr class="text-secondary my-4">
+
+            <!-- REGISTER -->
+            <div class="text-center">
+
+                <p class="text-secondary mb-2" style="font-size: 14px;">
+                    Don’t have an account yet?
+                </p>
+
+                <a href="{{ url_for('auth.signin') }}"
+                   class="btn btn-outline-light btn-sm">
+                    Sign up here
+                </a>
+
+            </div>
+
+            <!-- GUEST MODE -->
+            <div class="text-center mt-4">
+
+                <p class="text-muted mb-2" style="font-size: 13px;">
+                    Or explore without account
+                </p>
+
+                <a href="{{ url_for('market.market_home') }}"
+                   class="btn btn-outline-info btn-sm">
+                    Continue as guest →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

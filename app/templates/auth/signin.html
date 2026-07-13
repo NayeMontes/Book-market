@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block title %}
+Register Page
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid d-flex align-items-center justify-content-center"
+     style="min-height: 90vh; background: linear-gradient(135deg, #0f172a, #1e293b);">
+
+    <div class="card shadow-lg border-0"
+         style="width: 420px; border-radius: 16px; background: #111827; color: white;">
+
+        <div class="card-body p-4">
+
+            <h3 class="text-center mb-3">
+                ✨ Create Account
+            </h3>
+
+            <p class="text-center text-secondary mb-4" style="font-size: 14px;">
+                Join the Free Tech Books Market
+            </p>
+
+            <form method="POST" role="form">
+
+                {{ form.hidden_tag() }}
+
+                <!-- Username -->
+                <div class="mb-3">
+                    {{ form.username.label(class="form-label") }}
+                    {{ form.username(class="form-control bg-dark text-white border-secondary") }}
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email(class="form-control bg-dark text-white border-secondary") }}
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    {{ form.password1.label(class="form-label") }}
+                    {{ form.password1(class="form-control bg-dark text-white border-secondary") }}
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mb-3">
+                    {{ form.password2.label(class="form-label") }}
+                    {{ form.password2(class="form-control bg-dark text-white border-secondary") }}
+                </div>
+
+                <!-- Submit -->
+                <div class="d-grid mt-4">
+                    {{ form.submit(class="btn btn-primary btn-lg") }}
+                </div>
+
+            </form>
+
+            <hr class="text-secondary my-4">
+
+            <!-- LOGIN -->
+            <div class="text-center">
+                <p class="mb-2 text-secondary" style="font-size: 14px;">
+                    Already have an account?
+                </p>
+
+                <a href="{{ url_for('auth.login') }}"
+                   class="btn btn-outline-light btn-sm px-4">
+                    Login
+                </a>
+            </div>
+
+            <!-- GUEST MODE 👇 (AQUÍ LO AGREGAS) -->
+            <div class="text-center mt-4">
+
+                <p class="text-muted mb-2" style="font-size: 13px;">
+                    Or explore without account
+                </p>
+
+                <a href="{{ url_for('market.market_home') }}"
+                   class="btn btn-outline-info btn-sm">
+                    Continue as guest →
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

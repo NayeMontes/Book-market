@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Error{% endblock %}
+
+{% block content %}
+
+<div class="container text-center py-5">
+    <h1 class="display-4">⚠️ Oops!</h1>
+    <p class="lead">{{ message }}</p>
+
+    <p class="text-muted">
+        Try searching again in the book market.
+    </p>
+
+    <a href="{{ url_for('market.market_home') }}" class="btn btn-outline-light mt-3 px-4">
+        🔍 Go back to search
+    </a>
+</div>
+
+{% endblock %}

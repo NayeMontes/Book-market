@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% block title %}
+Book Market
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-4">
+
+    <div class="text-center mb-5">
+        <div class="mb-4">
+                <img src="{{ url_for('static', filename='nayeli-books.png') }}" 
+                alt="Tech Books Logo" 
+                class="img-fluid" 
+                style="max-width: 120px; border-radius: 50%; border: 3px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        </div>
+        <h1 class="display-4 fw-bold">
+            📚 Book Market
+        </h1>
+        <p class="lead text-muted">
+            Discover thousands of free programming, software engineering, computer science books and others.
+        </p>
+        <div class="mt-3">
+            <span class="badge bg-primary mx-1">Programming</span>
+            <span class="badge bg-success mx-1">Python</span>
+            <span class="badge bg-warning text-dark mx-1">CSS</span>
+            <span class="badge bg-info text-dark mx-1">Engineering</span>
+            <span class="badge bg-danger mx-1">Others</span>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <input
+            id="searchInput"
+            class="form-control form-control-lg shadow"
+            placeholder="🔍 Search books, authors, technologies..."
+        >
+    </div>
+
+    <div id="loading"
+         class="text-center mb-4"
+         style="display:none;">
+        <div class="spinner-border text-primary"></div>
+        <p class="mt-3">
+            Searching books...
+        </p>
+    </div>
+
+    <div class="row" id="booksContainer"></div>
+
+    <div id="emptyState" class="text-center py-5">
+        <h3 id="emptyTitle">
+            🔎 Start searching
+        </h3>
+        <p id="emptyText" class="text-muted">
+            Try Python, Flask, JavaScript, Machine Learning...
+        </p>
+    </div>
+
+</div>
+
+
+<script>
+const input = document.getElementById("searchInput");
+const container = document.getElementById("booksContainer");
+const loading = document.getElementById("loading");
+const emptyState = document.getElementById("emptyState");
+const emptyTitle = document.getElementById("emptyTitle");
+const emptyText = document.getElementById("emptyText");
+const API_URL="{{ url_for('market.api_books') }}";
+let timeout;
+
+input.addEventListener("input",()=>{
+    clearTimeout(timeout);
+    timeout=setTimeout(searchBooks,400);
+});
+
+function searchBooks(){
+    const query=input.value.trim();
+    container.innerHTML="";
+    loading.style.display="none";
+    emptyState.style.display="block";
+    
+    // Restablecemos las clases de texto por si veníamos de un estado de error
+    emptyTitle.className = "";
+    emptyText.className = "text-muted";
+
+    if(query===""){
+        emptyTitle.innerHTML="🔎 Start searching";
+        emptyText.innerHTML="Search by title, author or technology.";
+        return;
+    }
+
+    loading.style.display="block";
+    emptyState.style.display="none"; // Escondemos el estado vacío mientras busca
+
+    fetch(`${API_URL}?search=${encodeURIComponent(query)}`)
+    .then(response => {
+        // ¡CRUCIAL!: Si el backend responde con 504 o 500, response.ok será false.
+        if (!response.ok) {
+            return response.json().then(err => { throw new Error(err.error || "Server error") });
+        }
+        return response.json();
+    })
+    .then(data=>{
+        loading.style.display="none";
+
+        if(!data || data.length===0){
+            emptyTitle.innerHTML="📭 No books found";
+            emptyText.innerHTML="Try another search.";
+            emptyState.style.display="block";
+            return;
+        }
+        
+        emptyState.style.display="none";
+
+        data.forEach(book=>{
+            container.innerHTML+=`
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow border-0" style="border-radius:18px; overflow:hidden; transition:.3s;">
+                        ${book.cover ?
+                            `<img src="${book.cover}" style="height:320px; object-fit:cover;">` :
+                            `<div style="height:320px; display:flex; align-items:center; justify-content:center; background:#111112; font-size:70px;">📚</div>`
+                        }
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="fw-bold text-dark mb-2"><strong>${book.title}</strong></h5>
+                            
+                            <p class="text-secondary mb-2 small fw-semibold">✍️ ${book.author}</p>
+                            
+                            <div class="mb-3">
+                                <span class="badge bg-primary">${book.category}</span>
+                            </div>
+                            
+                            <p class="text-dark fw-normal" style="font-size:14px; height:85px; overflow:hidden; line-height:1.5;">
+                                ${book.description || "No description available."}
+                            </p>
+                            
+                            <hr class="text-muted">
+                            
+                            <div class="small mb-2 text-dark">
+                                🌍 <strong>Language:</strong> ${(book.language || "N/A").toUpperCase()}
+                            </div>
+                            <div class="small mb-2 text-dark">
+                                📄 <strong>Pages:</strong> ${book.pages}
+                            </div>
+                            <div class="small mb-2 text-dark">
+                                🏢 <strong>Publisher:</strong> ${book.publisher}
+                            </div>
+                            <div class="small mb-3 text-dark">
+                                📅 <strong>Published:</strong> ${book.year}
+                            </div>
+                            
+                            <a href="${book.link}" target="_blank" class="btn btn-primary mt-auto">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    })
+    .catch((error)=>{
+        loading.style.display="none";
+        
+        // Estilizado dinámico en caso de error (como el Timeout 504)
+        emptyTitle.innerHTML = "⚠️ Service is busy";
+        emptyTitle.className = "text-danger fw-bold";
+        
+        // Si el backend envió un mensaje personalizado, lo usamos; si no, ponemos uno genérico
+        emptyText.innerHTML = error.message.includes("Server error") 
+            ? "The book services are taking too long to respond. Please try searching again."
+            : error.message;
+            
+        emptyState.style.display="block";
+    });
+}
+</script>
+
+{% endblock %}
