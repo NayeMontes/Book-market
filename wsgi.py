@@ -1,12 +1,15 @@
 import os
 import sys
 
-# Forzar a Python a buscar módulos en la raíz del proyecto en producción
-sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+print("--- DETECTIVE: LISTANDO ARCHIVOS EN LA RAÍZ ---")
+try:
+    print("Archivos actuales:", os.listdir('.'))
+except Exception as e:
+    print("No se pudo listar:", e)
+print("-----------------------------------------------")
 
 from app import create_app
 
-# Inicializar la aplicación con la configuración por defecto
 app = create_app('default')
 
 if __name__ == "__main__":
