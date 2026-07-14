@@ -96,15 +96,13 @@ HTML, CSS, Javascript, Bootstrap, Python, Flask
 
 - [@NayeMontes](https://github.com/NayeMontes/nayeli-montes)
 
-## 🔗 Links
+## 💬 Feedback & Contact
 
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nayeli-montes/)
+Your feedback is highly appreciated! You can contact me through:
 
+* ✉️ **Email:** [nayeli.montes@hotmail.com](mailto:nayeli.montes@hotmail.com)
+* 💼 **LinkedIn:** [Nayeli Montes](https://www.linkedin.com/in/nayeli-montes/)
 
-
-## 💬 Feedback
-
-If you have any feedback, please reach out to us at nayeli.montes@hotmail.com
 
 
 ## 🖼️ Screenshots
