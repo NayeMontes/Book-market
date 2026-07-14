@@ -20,34 +20,32 @@ Our tech stack will include the following:
 * **SQLite** as our database of choice
 * You can download and install the dependencies mentioned above using `pip` as:
 ```
-alembic          1.8.1  
-autopep8         1.6.0  
-bcrypt           4.0.0  
-click            8.1.3  
-colorama         0.4.5  
-dnspython        2.2.1  
-email-validator  1.3.0  
-Flask            2.0.3  
-Flask-Admin      1.6.0
-Flask-Bcrypt     1.0.0
-Flask-Login      0.6.0
-Flask-Migrate    3.1.0
-Flask-SQLAlchemy 2.5.1
-Flask-WTF        1.0.0
-greenlet         1.1.3
-idna             3.4  
-itsdangerous     2.1.2
-Jinja2           3.1.2
-Mako             1.2.3
-MarkupSafe       2.1.1
-pip              22.2.2
-psycopg2         2.9.3
-pycodestyle      2.9.1
-setuptools       58.1.0
-SQLAlchemy       1.4.41
-toml             0.10.2
-Werkzeug         2.2.2
-WTForms          3.0.1
+alembic==1.13.0
+bcrypt==4.1.1
+blinker==1.7.0
+click==8.1.7
+colorama==0.4.6
+dnspython==2.4.2
+email-validator==2.1.0.post1
+Flask==2.0.3
+Flask-Admin==1.6.0
+Flask-Bcrypt==1.0.0
+Flask-Cors==3.0.10
+Flask-Login==0.6.0
+Flask-Migrate==4.0.5
+Flask-SQLAlchemy==2.5.1
+Flask-WTF==1.0.0
+greenlet==3.0.1
+idna==3.6
+itsdangerous==2.1.2
+Jinja2==3.1.2
+Mako==1.3.0
+MarkupSafe==2.1.3
+six==1.16.0
+SQLAlchemy==1.4.41
+typing_extensions==4.8.0
+Werkzeug==2.2.2
+WTForms==3.1.1
 ```
 
 ### 2. Frontend Dependencies
@@ -84,7 +82,7 @@ flask run --reload
 Navigate to project homepage [http://127.0.0.1:5000/](http://127.0.0.1:5000/) or [http://localhost:5000](http://localhost:5000) 
 
 
-## Tech Stack
+## 💻 Tech Stack
 
 **Client:** HTML, CSS, Javascript, Bootstrap
 
@@ -94,7 +92,7 @@ Navigate to project homepage [http://127.0.0.1:5000/](http://127.0.0.1:5000/) or
 HTML, CSS, Javascript, Bootstrap, Python, Flask
 
 
-## Author
+## 👤 Author
 
 - [@NayeMontes](https://github.com/NayeMontes/nayeli-montes)
 
@@ -104,12 +102,12 @@ HTML, CSS, Javascript, Bootstrap, Python, Flask
 
 
 
-## Feedback
+## 💬 Feedback
 
 If you have any feedback, please reach out to us at nayeli.montes@hotmail.com
 
 
-## Screenshots
+## 🖼️ Screenshots
 
 ### Home page 
 
