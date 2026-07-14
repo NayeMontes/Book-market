@@ -117,12 +117,12 @@ If you have any feedback, please reach out to us at nayeli.montes@hotmail.com
 
 ### Market page 
 
-![](./static/images/screenshots/market.png)
+![](Market.png)
 
 ### Register page 
 
-![](./static/images/screenshots/register.png)
+![](Register.png)
 
 ### Login page 
 
-![](./static/images/screenshots/login.png)
+![](Log-in.png)
