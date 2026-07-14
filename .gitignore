@@ -9,8 +9,7 @@ migrations/
 
 
 data-dev.sqlite
-data-test.sqlite
-config.py 
+data-test.sqlite 
 pyvenv.cfg
 
 
