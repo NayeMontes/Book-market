@@ -9,8 +9,13 @@ from flask_login import (
     login_required, 
     current_user
 )
-
-from config import config 
+try:
+    from config import config
+except ImportError:
+    import sys
+    import os
+    sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
+    from config import config
 
 
 # Initialize flask app extensions
