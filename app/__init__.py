@@ -10,7 +10,11 @@ from flask_login import (
     current_user
 )
 
-from config import config
+# Parche anticaídas para buscar config en la raíz o en app/
+try:
+    from config import config
+except ModuleNotFoundError:
+    from .config import config
 
 
 # Initialize flask app extensions
@@ -28,7 +32,6 @@ current_user = current_user
 
 
 def create_app(config_name: str) -> Flask:
-
     """
     Create a Flask application with the given configuration name.
 
@@ -37,7 +40,6 @@ def create_app(config_name: str) -> Flask:
 
     Returns:
         Flask: The Flask application.
-
     """
 
     # Create Flask application
@@ -55,7 +57,6 @@ def create_app(config_name: str) -> Flask:
 
     login_manager.init_app(app) 
 
-
     # Create and initialize admin
     from models.model import Users, SecureModelView, SecureAdminIndexView
 
@@ -63,9 +64,7 @@ def create_app(config_name: str) -> Flask:
     admin.add_view(SecureModelView(Users, db.session))
     admin.init_app(app)
 
-
     # Register blueprints
-
     from .auth import auth as auth_bp
     app.register_blueprint(auth_bp, name='auth')
 
@@ -78,5 +77,9 @@ def create_app(config_name: str) -> Flask:
     from .newbook import newbook as newbook_bp
     app.register_blueprint(newbook_bp, name='newbook')
 
+    # CREACIÓN DE TABLAS EN PRODUCCIÓN
+    # Entramos al contexto de Flask para que SQLAlchemy pueda actuar
+    with app.app_context():
+        db.create_all()
 
-    return app 
+    return app
